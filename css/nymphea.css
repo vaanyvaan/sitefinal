@@ -1,0 +1,806 @@
+* {
+	margin: 0;
+	padding: 0;	
+}
+
+
+
+body {
+	overflow-x: hidden;
+	display: grid;
+	grid-template-columns: 21.6% 1.4fr 1fr;
+	grid-template-rows: 106px auto auto;
+	grid-template-areas:
+	"sidebar header header"
+    "sidebar article article"
+    "sidebar article2 cartel"
+    "sidebar nav nav"
+    "sidebar footer footer";
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	background-color: #ebebeb;
+}
+
+aside {
+	grid-area: sidebar;
+	position: fixed;
+	background-color: #ebebeb;
+	width: 21.6%;
+	height: 100vh;
+}
+
+header {
+	grid-area: header;
+	background-color: #ebebeb;
+	height: 106px;
+}
+
+h1 {
+	text-decoration: none;
+	color: black;
+	opacity: 0.7;
+	font-size: 20px;
+	font-weight: 80;
+	font-family: 'Poppins', Arial, sans-serif;
+	margin-top: 50px;
+}
+
+.nymphealogo {
+	opacity: 0.3;
+	width: auto;
+	height: 55px;
+	margin-top: 30px;
+}
+
+h2 {
+	color: black;
+	opacity: 0.8;
+	font-size: 13.5px;
+	font-style: italic;
+	font-weight: 100;
+	display: inline-block;  /* nécessaire pour que transform s'applique proprement */
+    transform: scaleY(0.96);  /* aplati verticalement de 5% */
+	font-family: 'Arial';
+	margin-top: 8px;
+}
+
+h4 {
+	text-decoration: none;
+	color: black;
+	opacity: 0.6;
+	line-height: 1.4;
+	font-size: 13.5px;
+	font-weight: 100;
+	display: block;  /* nécessaire pour que transform s'applique proprement */
+    transform: scaleY(0.96);  /* aplati verticalement de 5% */
+	font-family: 'Inter', Arial, sans-serif;
+	margin-top: 10px;
+   }
+
+h5 {
+	color: black;
+	opacity: 1;
+	font-size: 13.5px;
+	font-weight: 300;
+	font-family: 'Inter', Arial, sans-serif;
+	font-style: normal;
+	display: inline-block;  /* nécessaire pour que transform s'applique proprement */
+    transform: scaleY(0.96);  /* aplati verticalement de 5% */
+	margin-top: 2px;
+	text-align: justify;
+	line-height: 1.5;
+	
+}
+
+h6 {
+	text-align: left;
+	text-decoration: none;
+	color: black;
+	opacity: 0.6;
+	line-height: 1.4;
+	font-size: 10px;
+	font-weight: 100;
+	font-family: 'Inter', Arial, sans-serif;
+	display: inline-block;  /* nécessaire pour que transform s'applique proprement */
+    transform: scaleY(0.96);  /* aplati verticalement de 5% */
+	margin-top: 6px;
+}
+
+article {
+	grid-area: article;
+	background-color: #ebebeb;
+    height: 100%;
+    width: 72%;
+	padding-bottom: 23px;
+}
+
+article2 {
+	grid-area: article2;
+	background-color: #ebebeb;
+    height: auto;
+    width: 100%;
+	padding-top: 10px;
+}
+
+.myrina {
+	width: 100%;
+	height: auto;
+	margin-top: 6px;
+	margin-bottom: -5px;
+}
+
+cartel {
+    grid-area: cartel;
+    display: block;
+    background-color: #ebebeb;
+    padding-top: 11px;
+	padding-left: 12%;
+    padding-right: 25px;
+    box-sizing: border-box;
+    width: 100%; 
+    overflow-wrap: break-word;
+}
+
+
+.cartel-line {
+    width: 100%;
+    height: 0.8px;
+    background-color: black;
+    opacity: 0.2;
+    margin-top: 9px;
+    border: none;
+	display: block;
+}
+
+
+.nav {
+    grid-area: nav;
+    width: 100%;
+    background: #ebebeb;
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper-nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.suivant {
+    height: 170px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+	grid-area: footer;
+	background-color: #ebebeb;
+    height: 10px;
+    width: 100%;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-decoration: none; /* Pour éviter le soulignement du lien */
+}
+
+.imgprécédent,
+.imgsuivant {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.8);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.imgprécédent:hover,
+.imgsuivant:hover {
+    transition: filter 0.5s ease, transform 0.5s ease;
+    filter: brightness(40%);
+    transform: scale(1.1);
+}
+
+.overlay-text1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-family: 'Nunito', sans-serif;
+    pointer-events: none; /* Le texte ne gêne pas le clic sur le lien */
+    z-index: 2;
+    text-align: center;
+    letter-spacing: 1px;
+    align-items: flex-end; /* Aligne à droite le texte et le sous-texte */
+    text-align: center;
+}
+
+.overlay-subtext1 {
+    font-size: 1.6em;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 500;
+    margin-top: 0.7em;
+    line-height: 1.1;
+    align-items: flex-end; /* Aligne à droite le texte et le sous-texte */
+    text-align: center;
+}
+
+.overlay-text2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-family: 'Nunito', sans-serif;
+    pointer-events: none; /* Le texte ne gêne pas le clic sur le lien */
+    z-index: 2;
+    text-align: center;
+    letter-spacing: 1px;
+    align-items: flex-start; /* Aligne à droite le texte et le sous-texte */
+    text-align: center;
+}
+
+.overlay-subtext2 {
+    font-size: 1.6em; 
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 500;
+    margin-top: 0.7em;
+    line-height: 1.1;
+    align-items: flex-start; /* Aligne à droite le texte et le sous-texte */
+    text-align: center;
+}
+
+.logo2 {
+	width: 104px;
+	height: 70px;
+	margin-left: 23px;
+	margin-top: 16px;
+	opacity: 0.4;
+}
+
+.videocase {
+	position: left;
+	height: auto;
+	bottom: 0;
+	left: 0;
+}
+
+.liens-aside ul {
+	list-style-type: none;
+	padding: 0;
+	margin-top: 17px;
+}
+
+.liens-aside li {
+	margin-left: 23px;
+	line-height: 1.4;
+}
+
+.liens-aside a {
+	text-decoration: none;
+	color: black;
+	opacity: 1;
+	font-size: 13.5px;
+	font-weight: 300;
+	font-family: 'Inter', Arial, sans-serif;
+    display: inline-block;
+    transform: scaleY(0.96);
+}
+
+.liens-aside a:hover {
+	color: white;
+	opacity: 1;
+}
+
+.liens-aside2 ul {
+	list-style-type: none;
+	padding: 0;
+	margin-top: 17px;
+}
+
+.liens-aside2 li {
+	margin-left: 23px;
+	line-height: 1.4;
+}
+
+.liens-aside2 a {
+	text-decoration: none;
+	color: black;
+	opacity: 0.45;
+	font-size: 13.5px;
+	font-weight: 300;
+	font-family: 'Inter', Arial, sans-serif;
+    display: inline-block;
+    transform: scaleY(0.96);
+}
+
+.liens-aside2 a:hover {
+	color: white;
+	opacity: 1;
+}
+
+.vimeologo {
+	position: absolute;
+	width: 20px;
+	bottom: 0;
+	margin-bottom: 60px;
+	margin-left: 40px;
+	opacity: 0;
+}
+
+.vimeologo:hover {
+	opacity: 0.2;
+}
+
+.menu-hamburger {
+	 display: none;
+}
+
+/*---------------------------------------------------- 1 */ 	
+
+@media only screen and (max-width:1300px){
+	.liens-aside ul {
+	    list-style-type: none;
+	    padding: 0;
+	    margin-top: 17px;
+    }
+
+    .liens-aside li {
+	    margin-left: 21px;
+	    line-height: 1.2;
+    }
+
+    .liens-aside a {
+	    text-decoration: none;
+	    color: black;
+	    opacity: 1;
+	    font-size: 12px;
+	    font-weight: 300;
+	    font-family: 'Inter', Arial, sans-serif;
+		display: inline-block;
+        transform: scaleY(0.96);
+    }
+
+    .liens-aside a:hover {
+	    color: white;
+	    opacity: 1;
+    }
+
+    .liens-aside2 ul {
+	    list-style-type: none;
+	    padding: 0;
+	    margin-top: 17px;
+    }
+
+    .liens-aside2 li {
+	    margin-left: 21px;
+	    line-height: 1.2;
+    }
+
+    .liens-aside2 a {
+	    text-decoration: none;
+	    color: black;
+	    opacity: 0.60;
+	    font-size: 12px;
+	    font-weight: 300;
+	    font-family: 'Inter', Arial, sans-serif;
+		display: inline-block;
+        transform: scaleY(0.96);
+    }
+	
+	.logo2 {
+	    width: 95px;
+	    height: 63px;
+	    margin-left: 21px;
+	    margin-top: 16px;
+	    opacity: 0.4;
+    }
+	
+	h2 {
+	    color: black;
+	    opacity: 0.8;
+	    font-size: 12px;
+	    font-style: italic;
+	    font-weight: 100;
+	    display: inline-block;  /* nécessaire pour que transform s'applique proprement */
+        transform: scaleY(0.96);  /* aplati verticalement de 5% */
+	    font-family: 'Arial';
+	    margin-top: 8px;
+    }
+	
+	h4 {
+	    text-decoration: none;
+	    color: black;
+	    opacity: 0.6;
+	    line-height: 1.4;
+	    font-size: 12px;
+	    font-weight: 100;
+	    display: inline-block;  /* nécessaire pour que transform s'applique proprement */
+        transform: scaleY(0.96);  /* aplati verticalement de 5% */
+	    font-family: 'Inter', Arial, sans-serif;
+	    margin-top: 10px;
+    }
+
+    h5 {
+	    color: black;
+	    opacity: 1;
+	    font-size: 12px;
+	    font-weight: 300;
+	    font-family: 'Inter', Arial, sans-serif;
+	    font-style: normal;
+	    display: inline-block;  /* nécessaire pour que transform s'applique proprement */
+        transform: scaleY(0.96);  /* aplati verticalement de 5% */
+	    margin-top: 2px;
+	    text-align: justify;
+	    line-height: 1.5;
+    }
+	
+	.menu-hamburger {
+	    display: none;
+    }
+}
+
+/*---------------------------------------------------- 2 */ 	
+
+@media only screen and (max-width:990px){
+	body {
+	    overflow-x: hidden;
+	    display: grid;
+	    grid-template-columns: 1fr;
+	    grid-template-rows: auto;
+	    grid-template-areas:
+	    "sidebar"
+	    "header"
+	    "article"
+	    "cartel"
+		"article2"
+	    "nav";
+	    width: 100%;
+	    height: 100vh;
+	    margin: 0 auto;
+	    background-color: #ebebeb;  
+    }
+
+    aside {
+	    grid-area: sidebar;
+	    display: flex;
+		z-index: 9999;
+        flex-direction: row; /* disposition horizontale */
+        justify-content: space-between; /* logo gauche, menu droite */
+        align-items: center;
+        width: 100%;
+        height: 63px;
+        padding: 0 20px;
+        background-color: #ebebeb;
+    }
+	
+	header {
+	    grid-area: header;
+	    background-color: #ebebeb;
+		margin-top: 63px;
+		width: 100%;
+	    height: 45px;
+    }
+	
+	h1 {
+	    text-decoration: none;
+	    color: black;
+	    opacity: 0.7;
+	    font-size: 17.5px;
+	    font-weight: 80;
+	    font-family: 'Arial';
+	    margin-top: 22px;
+		margin-left: 12px;
+    }
+	
+	article {
+	    grid-area: article;
+	    background-color: #ebebeb;
+        height: 100%;
+        width: auto;
+		padding: 13px;
+    }
+
+	cartel {
+	    grid-area: cartel;
+	    background-color: #ebebeb;
+        height: 100%;
+        width: 100%;
+	    padding-top: 9px;
+	    padding-right: 15px;
+		padding-left: 14px;
+    }	
+
+    h2 {
+	    color: black;
+	    opacity: 0.8;
+	    font-size: 14px;
+	    font-style: italic;
+	    font-weight:100;
+	    font-family: 'Arial';
+	    margin-top: 5px;
+    }
+
+    h3 {
+	    text-decoration: none;
+	    color: black;
+	    opacity: 0.2;
+	    margin-top: -8px;
+    }
+
+    h4 {
+	    text-decoration: none;
+	    color: black;
+	    opacity: 0.6;
+	    line-height: 1.4;
+	    font-size: 14px;
+	    font-weight: 300;
+	    font-family: 'Inter', Arial, sans-serif;
+		display: inline-block;
+        transform: scaleY(0.96);
+	    margin-top: 10px;
+    }
+
+    article2 {
+	    grid-area: article2;
+	    background-color: #ebebeb;
+        height: 100%;
+        width: auto;
+	    padding-top: 17px;
+		padding-left: 13px;
+		padding-right: 13px;
+		padding-bottom: -7px;
+    }
+
+    h5 {
+	    color: black;
+	    opacity: 1;
+	    font-size: 14px;
+	    font-weight: 300;
+	    font-family: 'Inter', Arial, sans-serif;
+	    margin-top: 9px;
+	    text-align: justify;
+	    line-height: 1.5;
+        display: inline-block;
+        transform: scaleY(0.96);
+    }
+
+    h6 {
+	    text-align: left;
+	    text-decoration: none;
+	    color: black;
+	    opacity: 0.6;
+	    line-height: 1.4;
+	    font-size: 11px;
+	    font-weight: 80;
+	    font-family: 'Inter', Arial, sans-serif;
+		display: inline-block;  /* nécessaire pour que transform s'applique proprement */
+        transform: scaleY(0.96);  /* aplati verticalement de 5% */
+	    margin-top: 7px;
+		padding-left: 1px;
+    }
+ 
+    .logo2 {
+	    margin-left: -4px;
+        margin-top: 3px;
+        width: 84px;
+        height: 52px;
+	    opacity: 0.4;
+    }
+	
+	.menu-hamburger {
+	    display: block;
+		list-style-type: none;
+		text-decoration: none;
+	    color: black;
+		opacity: 0.75;
+        height: 35px;
+        margin-top: 0; /* optionnel, ajuste selon rendu */
+        padding-right: 40px;
+		cursor: pointer;
+    }
+
+	.liens-aside {
+	    display: none;
+    }
+	
+	.liens-aside2 {
+	    display: none;
+	}
+	
+	.vimeologo {
+		display: none;
+    }
+	
+    .nav {
+        grid-area: nav;
+        width: 100%;
+        background: white;
+        padding: 0;
+        margin: 0;
+    }
+
+    .wrapper-nav {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .precedent, .suivant {
+        height: 170px;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+	
+	footer {
+	    display: none;
+	}
+	
+	.overlay-text1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-size: 0.8em;
+        font-family: 'Nunito', sans-serif;
+        pointer-events: none; /* Le texte ne gêne pas le clic sur le lien */
+        z-index: 2;
+        text-align: center;
+        letter-spacing: 1px;
+        align-items: flex-end; /* Aligne à droite le texte et le sous-texte */
+        text-align: center;
+    }
+
+    .overlay-subtext1 {
+        font-size: 1.6em;
+        font-family: 'Poppins', Arial, sans-serif;
+        font-weight: 500;
+        margin-top: 0.7em;
+        line-height: 1.1;
+        align-items: flex-end; /* Aligne à droite le texte et le sous-texte */
+        text-align: center;
+    }
+
+    .overlay-text2 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-size: 0.8em;
+        font-family: 'Nunito', sans-serif;
+        pointer-events: none; /* Le texte ne gêne pas le clic sur le lien */
+        z-index: 2;
+        text-align: center;
+        letter-spacing: 1px;
+        align-items: flex-start; /* Aligne à droite le texte et le sous-texte */
+        text-align: center;
+    }
+
+    .overlay-subtext2 {
+        font-size: 1.6em; 
+        font-family: 'Poppins', Arial, sans-serif;
+        font-weight: 500;
+        margin-top: 0.7em;
+        line-height: 1.1;
+        align-items: flex-start; /* Aligne à droite le texte et le sous-texte */
+        text-align: center;
+    }
+}
+
+
+/*---------------------------------------------------- 3 */ 	
+
+@media only screen and (max-width:690px){
+	body {
+	    overflow-x: hidden;
+	    display: grid;
+	    grid-template-columns: 1fr;
+	    grid-template-rows: 1fr;
+	    grid-template-areas:
+	    "sidebar"
+	    "header"
+	    "article"
+		"cartel"
+		"article2"
+		"nav"
+		"footer";
+	    width: 100%;
+	    height: 100vh;
+	    margin: 0 auto;
+	    background-color: #ebebeb;   
+    }
+	
+	.wrapper-nav {
+        display: block; /* Passe de grid à block pour empiler */
+        font-size: 0; 
+	}
+	
+	.precedent,
+    .suivant {
+        width: 100%;   /* prennent toute la largeur */
+        height: 200px; /* adapte la hauteur si besoin */
+        margin-bottom: 10px; /* espace entre les boutons empilés */
+        margin: 0;      /* aucune marge autour pour coller */
+        font-size: initial; /* remettre la taille de police normale */
+	}
+	
+	.overlay-text1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-size: 0.8em;
+        font-family: 'Nunito', sans-serif;
+        pointer-events: none; /* Le texte ne gêne pas le clic sur le lien */
+        z-index: 2;
+        text-align: center;
+        letter-spacing: 1px;
+        align-items: flex-end; /* Aligne à droite le texte et le sous-texte */
+        text-align: center;
+    }
+
+    .overlay-subtext1 {
+        font-size: 1.6em;
+        font-family: 'Poppins', Arial, sans-serif;
+        font-weight: 500;
+        margin-top: 0.7em;
+        line-height: 1.1;
+        align-items: flex-end; /* Aligne à droite le texte et le sous-texte */
+        text-align: center;
+    }
+
+    .overlay-text2 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-size: 0.8em;
+        font-family: 'Nunito', sans-serif;
+        pointer-events: none; /* Le texte ne gêne pas le clic sur le lien */
+        z-index: 2;
+        text-align: center;
+        letter-spacing: 1px;
+        align-items: flex-start; /* Aligne à droite le texte et le sous-texte */
+        text-align: center;
+    }
+
+    .overlay-subtext2 {
+        font-size: 1.6em; 
+        font-family: 'Poppins', Arial, sans-serif;
+        font-weight: 500;
+        margin-top: 0.7em;
+        line-height: 1.1;
+        align-items: flex-start; /* Aligne à droite le texte et le sous-texte */
+        text-align: center;
+    }
+}
